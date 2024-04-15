@@ -4,6 +4,8 @@ build/
 nbbuild/
 dist/
 nbdist/
+bin/
+obj/
 nbactions.xml
 nb-configuration.xml
 .nb-gradle/

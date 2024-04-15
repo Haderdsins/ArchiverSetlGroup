@@ -1,4 +1,5 @@
-﻿using GZipTest;
+﻿using System;
+using GZipTest;
 
 Console.WriteLine("GZipTest.exe compress/decompress [имя исходного файла] [имя результирующего файла]");
 string input = Console.ReadLine();
