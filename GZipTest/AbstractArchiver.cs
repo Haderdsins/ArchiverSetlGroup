@@ -52,7 +52,8 @@ public abstract class AbstractArchiver
         for (int i = 0; i < processThread.Length; i++)
         {
             autoResetEvents[i] = new AutoResetEvent(false);
-            processThread[i] = new Thread(() => BlockProcessing(i));
+            var i1 = i;
+            processThread[i] = new Thread(() => BlockProcessing(i1));
             processThread[i].Start();
         }
 
