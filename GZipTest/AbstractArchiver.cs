@@ -51,16 +51,15 @@ public abstract class AbstractArchiver
 
         for (int i = 0; i < processThread.Length; i++)
         {
-            var j = i;
             autoResetEvents[i] = new AutoResetEvent(false);
-            processThread[i] = new Thread(() => BlockProcessing(j));
+            processThread[i] = new Thread(() => BlockProcessing(i));
             processThread[i].Start();
         }
 
         Thread threadWrite = new Thread(WriteToFile);
         threadWrite.Start();
         WaitHandle.WaitAll(autoResetEvents);
-        dataBlocksToWrite.Completed();//дописать метод
+        dataBlocksToWrite.Completed();
         threadWrite.Join();
     }
 }
