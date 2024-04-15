@@ -30,7 +30,7 @@ public class ArchiveController
 
         if (args[0].ToLower().Equals("compress")||args[0].ToLower().Equals("decompress"))
         {
-            processArchiver = args[0].ToLower();
+            _processArchiver = args[0].ToLower();
         }
         else
         {
@@ -38,15 +38,15 @@ public class ArchiveController
             return false;
         }
 
-        inputFile = args[1];
-        if (inputFile.Length==0 || !File.Exists(inputFile))
+        _inputFile = args[1];
+        if (_inputFile.Length==0 || !File.Exists(_inputFile))
         {
             Console.WriteLine("Название файла введено некорректно или такого файла не существует");
             return false;
         }
         
-        outputFile = args[2];
-        if (inputFile.Length==0|| File.Exists(outputFile))
+        _outputFile = args[2];
+        if (_inputFile.Length==0|| File.Exists(_outputFile))
         {
             Console.WriteLine("Файл с таким выходным названием уже существует");
             return false;
@@ -64,13 +64,13 @@ public class ArchiveController
             if (IsCorrectParametrs())
             {
                 AbstractArchiver abstractArchiver;
-                if (processArchiver.Equals("compress"))
+                if (_processArchiver.Equals("compress"))
                 {
-                    abstractArchiver = new Compress(inputFile, outputFile);
+                    abstractArchiver = new Compress(_inputFile, _outputFile);
                 }
                 else
                 {
-                    abstractArchiver = new Decompress(inputFile, outputFile);
+                    abstractArchiver = new Decompress(_inputFile, _outputFile);
                 }
                 abstractArchiver.GetProccess();
             }
